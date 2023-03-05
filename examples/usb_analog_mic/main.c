@@ -1,5 +1,5 @@
 /*
- * Derived from other examples here by Misha Nelyubov
+ * Derived from other examples here by Misha Nelyubov (2023-03-04)
  * 
  * This examples creates a USB Microphone device using the TinyUSB
  * library and captures data from a PDM microphone using a sample
