@@ -8,6 +8,8 @@
 #ifndef _PICO_ANALOG_MICROPHONE_H_
 #define _PICO_ANALOG_MICROPHONE_H_
 
+#include "hardware/pio.h"
+
 typedef void (*analog_samples_ready_handler_t)(void);
 
 struct analog_microphone_config {
