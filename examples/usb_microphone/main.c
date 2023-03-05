@@ -19,8 +19,11 @@
 // configuration
 const struct pdm_microphone_config config = {
   .gpio_data = 2,
+
   .gpio_clk = 3,
+
   .pio = pio0,
+
   .pio_sm = 0,
   .sample_rate = SAMPLE_RATE,
   .sample_buffer_size = SAMPLE_BUFFER_SIZE,
@@ -33,8 +36,7 @@ uint16_t sample_buffer[SAMPLE_BUFFER_SIZE];
 void on_pdm_samples_ready();
 void on_usb_microphone_tx_ready();
 
-int main(void)
-{
+int main(void){
   // initialize and start the PDM microphone
   pdm_microphone_init(&config);
   pdm_microphone_set_samples_ready_handler(on_pdm_samples_ready);

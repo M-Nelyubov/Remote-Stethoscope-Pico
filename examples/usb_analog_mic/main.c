@@ -36,23 +36,6 @@ uint16_t sample_buffer[SAMPLE_BUFFER_SIZE];
 void on_analog_samples_ready();
 void on_usb_microphone_tx_ready();
 
-
-void on_analog_samples_ready()
-{
-    // callback from library when all the samples in the library
-    // internal sample buffer are ready for reading 
-    samples_read = analog_microphone_read(sample_buffer, SAMPLE_BUFFER_SIZE);
-}
-
-void on_usb_microphone_tx_ready()
-{
-  // Callback from TinyUSB library when all data is ready
-  // to be transmitted.
-  //
-  // Write local buffer to the USB microphone
-  usb_microphone_write(sample_buffer, sizeof(sample_buffer));
-}
-
 int main(void){
     // initialize and start the Analog microphone
     analog_microphone_init(&config);
@@ -69,5 +52,22 @@ int main(void){
     }
 
     return 0;
+}
 
+void on_analog_samples_ready()
+{
+    // callback from library when all the samples in the library
+    // internal sample buffer are ready for reading 
+    //
+    // Read new samples into local buffer.
+    analog_microphone_read(sample_buffer, SAMPLE_BUFFER_SIZE);
+}
+
+void on_usb_microphone_tx_ready()
+{
+  // Callback from TinyUSB library when all data is ready
+  // to be transmitted.
+  //
+  // Write local buffer to the USB microphone
+  usb_microphone_write(sample_buffer, sizeof(sample_buffer));
 }
