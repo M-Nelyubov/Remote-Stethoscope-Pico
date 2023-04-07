@@ -1,5 +1,5 @@
 /*
- * Derived from other examples here by Misha Nelyubov (2023-03-04)
+ * Derived from other examples here by Misha Nelyubov and Jake Savitt (2023-03-04)
  * 
  * This examples creates a USB Microphone device using the TinyUSB
  * library and captures data from a PDM microphone using a sample
@@ -11,7 +11,7 @@
  */
 
 #include "pico/analog_microphone.h"
-
+#include <stdio.h>
 #include "usb_microphone.h"
 
 // configuration
@@ -46,6 +46,9 @@ int main(void){
     usb_microphone_init();
     usb_microphone_set_tx_ready_handler(on_usb_microphone_tx_ready);
 
+    // Initialize Serial Output
+    stdio_init_all();
+
     while (1) {
         // run the USB microphone task continuously
         usb_microphone_task();
@@ -70,7 +73,8 @@ void on_usb_microphone_tx_ready()
   //
   // Write local buffer to the USB microphone
   for(int i = 0; i < SAMPLE_BUFFER_SIZE; i++){
-    sample_buffer[i] *= 64;
+    sample_buffer[i];
+    printf(sample_buffer[i]);
   }
 
   usb_microphone_write(sample_buffer, sizeof(sample_buffer));
