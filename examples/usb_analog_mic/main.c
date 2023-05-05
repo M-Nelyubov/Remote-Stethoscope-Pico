@@ -70,7 +70,7 @@ void on_usb_microphone_tx_ready()
   //
   // Write local buffer to the USB microphone
   for(int i = 0; i < SAMPLE_BUFFER_SIZE; i++){
-    sample_buffer[i] *= 64;
+    sample_buffer[i] *= 2;
   }
 
   usb_microphone_write(sample_buffer, sizeof(sample_buffer));
