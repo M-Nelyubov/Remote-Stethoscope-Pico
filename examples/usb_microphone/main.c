@@ -18,10 +18,11 @@
 
 // configuration
 const struct pdm_microphone_config config = {
-  .gpio_data = 2,
+  .gpio_data = 1,
+  .gpio_clk = 2,
 
-  .gpio_clk = 3,
-
+    // pins 3 and 4 need to be connected to ground
+    
   .pio = pio0,
 
   .pio_sm = 0,
