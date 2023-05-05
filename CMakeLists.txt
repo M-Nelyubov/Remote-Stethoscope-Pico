@@ -1,10 +1,6 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.13)
 
-# initialize pico_sdk from GIT
-# (note this can come from environment, CMake cache etc)
-# set(PICO_SDK_FETCH_FROM_GIT on)
-
-# pico_sdk_import.cmake is a single file copied from this SDK
+# initialize the SDK based on PICO_SDK_PATH
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
 
